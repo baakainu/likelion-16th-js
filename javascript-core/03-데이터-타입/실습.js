@@ -199,7 +199,7 @@ console.log(bigInt)
 
 // BigInt와 Number는 섞을 수 없음
 // ❌ 숫자와 빅인트를 더할 경우 에러!
-console.log(1000 + 100n) // ❌ TypeError: Invalid mix of BigInt and other type in addition.
+// console.log(1000 + 100n) // ❌ TypeError: Invalid mix of BigInt and other type in addition.
 // ✅ 빅인트끼리 더할 경우 가능
 console.log(BigInt(1000)/* 1000n */ + 100n) // ✅
 
@@ -208,11 +208,27 @@ console.log(BigInt(1000)/* 1000n */ + 100n) // ✅
 // 참조 타입 (Reference Types)
 // --------------------------------------------------------------------------
 
+// 함수 (기능, 작업 정의)
+function 커피_만들기(원두, 물, 얼음) {
+  // 작업 절차
+  // 1. 원두 갈기
+  console.log('1. 원두 갈기')
+  // 2. 물 끓이기
+  console.log('2. 물 끓이기')
+  // 3. 커피 추출
+  console.log('3. 커피 추출')
+  // 4. 커피 제조
+  console.log('4. 커피 제조')
+  // 5. 완성된 커피 내보내기
+  console.log('5. 완성된 커피 내보내기')
+}
+
+// 기능 사용(실행, 호출)
+console.log(커피_만들기('케냐', '뜨거운 물', true))
+
 // 객체
 
 // 배열
-
-// 함수
 
 
 // --------------------------------------------------------------------------
