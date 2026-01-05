@@ -21,16 +21,31 @@
 // --------------------------------------------------------------------------
 
 // 작은따옴표로 문자열 생성
+const 작은_따옴표 = '작은 따옴표' // 따옴표 쌍이 일치하지 않을 경우: ERROR Unterminated string literal
 
 // 큰따옴표로 문자열 생성
+const 큰_따옴표 = "큰 따옴표"
 
 // 역따옴표로 문자열 생성
+const 역따옴표 = `역 따옴표`
 
 // 문자열 안에 따옴표 사용
+let greetingMessage = 'i\'m fine.'
+greetingMessage = "i'm fine."
+greetingMessage = `i'm fine.`
+let recoredTime = '5\' 32"'
+recoredTime = "5' 32\""
+recoredTime = `5' 32"`
 
 // 이스케이프 문자
-// * \n
-// * \t
+// * \n - new line
+console.log('줄바꿈\n문자')
+// * \t - tab
+console.log('탭\t문자')
+console.log('탭\t\t문자')
+console.log('탭\t\t\t문자')
+console.log('줄바꿈\n\t탭')
+console.log('백슬래시(\\)')
 
 
 // --------------------------------------------------------------------------
