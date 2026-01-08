@@ -167,6 +167,72 @@ const double = x => x ** 2
 // --------------------------------------------------------------------------
 
 // 문자열 value를 받아 객체 { key: value }를 반환하는 createObject 함수 정의
+
+// 함수 선언문
+function createPerson(name, age, hobby) {
+  
+  // 사람(인간) 추상화한 객체 생성
+  const 사람_객체 = {
+    이름: name,
+    나이: age + '살',
+    취미: hobby,
+  }
+
+  // 사람 객체 반환
+  return 사람_객체
+}
+
+const minji = createPerson('하민지', 17, '유튜브 시청')
+const junwoo = createPerson('박준우', 45, '골프')
+
+console.log(minji)
+console.log(junwoo)
+
+// 함수 표현식
+const createTeamMember = function(userName, userEmail, IQ) {
+  // 인간 객체 { 이름, 이메일, 지능 }
+  return {
+    name: userName,
+    email: userEmail,
+    intelligence: IQ
+  }
+}
+
+const hyoungju = createTeamMember('임형주', 'lim@company.io', 145)
+const sangsu = createTeamMember('김상수', 'kimss@develop.dev', 136)
+console.log(hyoungju)
+console.log(sangsu)
+
+// 화살표 함수 표현식
+// 집(하우스) 만드는 기능(함수)
+// 집의 이름, 집의 유형, 집의 면적, 빌트인(냉장고, 세탁기, 에이컨 등) 여부
+
+const createHouse = (이름, 유형, 면적, 빌트인_여부) => {
+  // 집(house) 객체 생성
+  const house = {
+    name: 이름,
+    type: 유형,
+    area: parseFloat(면적) + '㎡',
+    isBuiltIn: 빌트인_여부,
+  }
+
+  // 생성된 집 객체 반환
+  return house
+}
+
+const createTownHouse = (이름, 유형, 면적, 빌트인_여부) => ({
+  name: 이름,
+  type: 유형,
+  area: parseFloat(면적) + '㎡',
+  isBuiltIn: 빌트인_여부,
+})
+
+const 서초동_아파트 = createTownHouse('데샹 아티스트', '아파트', 114, true)
+console.log(서초동_아파트)
+
+const 길음동_오피스텔 = createTownHouse('해초름', '오피스텔', 56, false)
+console.log(길음동_오피스텔)
+
 // 주의: 객체 리터럴의 중괄호 {}를 함수 본문 블록으로 착각하지 않도록 소괄호 ()로 감싸야 함
 
 // createObject 함수 호출 및 결과 출력
