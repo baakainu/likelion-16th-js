@@ -12,6 +12,19 @@
 // --------------------------------------------------------------------------
 
 // 전역 변수 garden 선언 ('마당의 꽃')
+const garden = '마당의 꽃'
+
+// 블록(Block, { ... }) - 지역 생성
+{
+  // 블록 내부의 범위(scope)에서만 
+  // 사용 가능한 지역변수(local variable)
+  // let, const 키워드로 정의된 변수 (✅ 외부에서 접근 불가능)
+  // 하지만, var 키워드로 정의된 변수는 지역 만들지 않음 (⚠️ 외부에서 접근 가능)
+  const blockVariable = '블록 내부의 변수'
+  console.log(blockVariable)
+}
+
+console.log(blockVariable)
 
 // 함수 myHouse 선언
 // - 지역 변수 desk 선언 ('책상 위의 노트북')
