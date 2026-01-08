@@ -77,7 +77,7 @@ const outer = function() {
   //   - 전역 변수 garden, 상위 함수 변수 livingRoom, 지역 변수 myRoom 출력
   console.log(garden)
   console.log(livingRoom)
-  // console.log(myRoomr)
+  // console.log(myRoom)
 }
 
 // 함수 outer 호출
@@ -94,6 +94,25 @@ console.log(garden)
 // - outer 함수 내부 지역 변수: '거실의 소파'
 // - inner 함수 내부 지역 변수: '내 방의 침대'
 
+// --------------------------------------------------------------------------
+// 안전펜스 (TDZ, 일시적 사각지대)
+// --------------------------------------------------------------------------
+
+// 변수 선언(생성, 초기화)
+// 생성만 한 시점
+
+// var 변수로 정의된 것은 호이스팅(끌어올려는 것처럼 보여요)
+// var 변수의 초기화가 없다면? JS 엔진이 undefined로 초기 값을 설정
+console.log(notTdz)
+
+// tdz (초기화 이전 상태: <Uninitialized>)
+console.log(tdz)
+
+
+let tdz = '✅ let, const 변수는 "안전펜스(TDZ)" 생성'
+var notTdz = '⚠️ var 변수는 TDZ를 만들지 않아요.'
+
+console.log(tdz)
 
 // --------------------------------------------------------------------------
 // 호이스팅 (Hoisting) - 함수 선언문
