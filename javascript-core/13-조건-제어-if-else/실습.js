@@ -13,13 +13,40 @@
 // --------------------------------------------------------------------------
 
 // isLightColorRed 변수에 true 할당
-
+// let isLightColorRed = true // '빨간불'
 
 // if … else 문 작성
+// if (조건) {
+//   조건이 참인 경우 실행
+// }
+
+// if (조건) {
+//   조건이 참인 경우 실행
+// } else {
+//   조건이 거짓인 경우 실행  
+// }
+
+// 조건 : 표현식 (Boolean 값 평가)
+// const isTruethy = isLightColorRed === true
+// 만약 평가된 값이 참이면, 코드 블록 실행
+// if (isTruethy) {}
+
+let isLightColorRed = true && false // '빨간불'
+
 // 조건: isLightColorRed가 true인 경우
 //   - '신호등 앞에서 멈춰야 합니다.' 출력
+if (isLightColorRed) {
+  console.log('신호등 앞에서 멈춰야 합니다.')
+} else {
+  console.log('좌우를 살피고 건널목을 건넙니다.')
+}
+
 // 조건이 false인 경우
 //   - '좌우를 살피고 건널목을 건넙니다.' 출력
+// if (isLightColorRed !== true) {
+if (!isLightColorRed) {
+  console.log('좌우를 살피고 건널목을 건넙니다.')
+}
 
 
 // 설명:
