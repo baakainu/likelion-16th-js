@@ -130,15 +130,16 @@ const firstGame = gameList.querySelector('li')
 
 // 게임 목록의 모든 아이템(게임) 찾아 집합으로 반환
 const allGames = gameList.querySelectorAll('li')
-console.log(allGames) // NodeList [li, li, li] (3)
+// console.log(allGames) // NodeList [li, li, li] (3)
 
 // 뮤지션 목록의 모든 아이템(뮤지션) 찾아 집합으로 반환
 const allMusicans = musicianList.querySelectorAll('li')
-console.log(allMusicans)
+// console.log(allMusicans)
 
 // name 속성 값이 'email'인 요소들을 수집
 const emails = document.getElementsByName('email')
-console.log(emails)
+// console.log(emails)
+
 
 // --------------------------------------------------------------------------
 // 그 밖의 요소 선택 API (참고)
@@ -162,3 +163,60 @@ console.log(emails)
 // 2. 모든 요소를 가져오려면 querySelectorAll(selector)을 사용해야 합니다.
 // 3. document는 전체를 대상으로, element는 그 내부를 대상으로 검색 범위를 좁힙니다.
 // 4. 대상을 정확히 가리키는 것이 DOM 조작의 첫 번째 단계입니다.
+
+// --------------------------------------------------------------------------
+// 실습
+// --------------------------------------------------------------------------
+
+// 1. id 속성으로 DOM 요소를 선택하여 콘솔 패널에 출력해봅니다.
+//    - querySelector('#idName')
+{ 
+  const exorcistCharacters = document.querySelector('#exorcist-characters')
+  // console.log(exorcistCharacters)
+}
+//    - getElementById('idName') ✅
+{
+  const exorcistCharacters = document.getElementById('exorcist-characters')
+  // console.log(exorcistCharacters)
+  
+  // 2. id 속성으로 선택한 DOM 요소에서 다음을 수행하세요.
+  let yohan = null // 개발자가 의도적으로 값을 비움을 의미 (추후 다른 값으로 채워질 수 있음)
+  //     1. 태그 또는 클래스 이름, 속성 이름/값 등을 사용해 "박요한"을 선택해보세요.
+  //     1-1. 태그 이름으로 찾기
+  yohan = exorcistCharacters.getElementsByTagName('li').item(0)
+  //     1-2. 선택자로 찾기
+  yohan = exorcistCharacters.querySelector('li') // 'li:first-child'
+  //     1-3. 클래스 이름으로 찾기
+  yohan = exorcistCharacters.getElementsByClassName('character').item(0)
+  //     1-4. 속성 이름과 값으로 찾기 (class, data-type)
+  yohan = exorcistCharacters.querySelector('[class="character yo-han"]')
+  yohan = exorcistCharacters.querySelector('[data-type="hero"]')
+  // console.log(yohan) // <li> (HTML Code) → HTMLLiElement (DOM Object)
+
+  //     2. 태그 또는 클래스 이름, 속성 이름/값 등을 사용해 "최강림"을 선택해보세요.
+  let masterChoi = null
+  //     2-1. 태그 이름으로 찾기
+  masterChoi = exorcistCharacters.getElementsByTagName('li').item(1)
+  //     2-2. 선택자로 찾기
+  masterChoi = exorcistCharacters.querySelector('li:nth-child(2)')
+  //     2-3. 클래스 이름으로 찾기
+  masterChoi = exorcistCharacters.getElementsByClassName('character').item(1)
+  //     2-4. 속성 이름과 값으로 찾기
+  masterChoi = exorcistCharacters.querySelector('[class="character master-choi"]')
+  masterChoi = exorcistCharacters.querySelector('[data-type="master"]')
+  // console.log(masterChoi)
+
+  //     3. 태그 또는 클래스 이름, 속성 이름/값 등을 사용해 "악령"을 선택해보세요.
+  let villainGhost = null
+  //     3-1. 태그 이름으로 찾기
+  villainGhost = exorcistCharacters.getElementsByTagName('li').item(2)
+  //     3-2. 선택자로 찾기
+  villainGhost = exorcistCharacters.querySelector('li:last-child')
+  //     3-3. 클래스 이름으로 찾기
+  villainGhost = exorcistCharacters.getElementsByClassName('character').item(2)
+  //     3-4. 속성 이름과 값으로 찾기
+  villainGhost = exorcistCharacters.querySelector('[class="character villain-ghost"]')
+  villainGhost = exorcistCharacters.querySelector('[data-type="villain"]')
+  console.log(villainGhost)
+
+}
