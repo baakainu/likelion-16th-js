@@ -146,6 +146,8 @@ if (!hasActiveClass) {
 // 메서드 이름은 가지고 있을 경우 'remove'
 // 가지고 있지 않을 경우에는 'add'
 targetElement.classList[methodName](activeClassName)
+// targetElement.classList['remove']('active')
+// targetElement.classList.remove('active')
 
 // 편의를 위한 toggle() 메서드를 사용하는 경우
 // classList.toggle
