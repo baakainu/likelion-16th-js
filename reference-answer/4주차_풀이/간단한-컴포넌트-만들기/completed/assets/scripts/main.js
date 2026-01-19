@@ -16,7 +16,7 @@ const ITEM_WIDTH = 160 // 캐러셀 아이템의 너비: 160px
 const GAP = 16 // 캐러셀 아이템 사이 간격: 16px
 const ITEM_TOTAL_COUNT = 6 // 캐러셀 아이템의 총 개수: 6개
 const ITEM_VIEW_COUNT = 2 // 화면에 표시되는 캐러셀 아이템의 개수: 2개
-const INIDICATOR_TOTAL = Math.ceil(ITEM_TOTAL_COUNT / ITEM_VIEW_COUNT)
+const INDICATOR_TOTAL = Math.ceil(ITEM_TOTAL_COUNT / ITEM_VIEW_COUNT)
 const DISTANCE = (ITEM_WIDTH + GAP) * ITEM_VIEW_COUNT // 이동 거리 = (아이템 너비 + 아이템 사이 간격) * 표시되는 아이템 개수
 
 // --------------------------------------------------------------------------
@@ -62,7 +62,7 @@ nextButton.addEventListener('click', () => {
 // 캐러셀 리스트(<ul>) 이동 기능(함수)
 function goToCarouselList(direction) {
   // 현재 인덱스 값 수정(update)
-  currentIndex = (currentIndex + direction + INIDICATOR_TOTAL) % INIDICATOR_TOTAL
+  currentIndex = (currentIndex + direction + INDICATOR_TOTAL) % INDICATOR_TOTAL
   // carouselList.style 인라인 스타일 설정
   carouselList.style.translate = 'calc(-' + DISTANCE + 'px * ' + currentIndex + ') 0'
 
@@ -77,5 +77,5 @@ function updateIndicator() {
   const nextCurrentIndex = currentIndex + 1
   // 인디케이터의 현재 인덱스 값 수정
   indicatorCurrent.textContent = nextCurrentIndex
-  carouselIndicator.setAttribute('aria-label', '현재 '+ nextCurrentIndex +'페이지 (전체 '+ INIDICATOR_TOTAL +'페이지)')
+  carouselIndicator.setAttribute('aria-label', '현재 '+ nextCurrentIndex +'페이지 (전체 '+ INDICATOR_TOTAL +'페이지)')
 }
