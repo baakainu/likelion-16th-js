@@ -51,41 +51,43 @@ saveButton.addEventListener('click', () => {
 // 실습 3.
 const alarmButton = document.querySelector('.alarm-button')
 
-// alarmButton.addEventListener('click', handleRing()/* callback 함수 설정 (⚠️ 실행하는 것이 아님!) */)
-alarmButton.addEventListener(
-  'click', 
-  function handleRing() {
-    window.alert('알림!')
-  }()
-)
+const handleRing = function () {
+  window.alert('알림!')
+  // 암묵적 undefined 반환
+  // addEventListener에 undefined가 설정되도 오류가 출력되지 앟음
+}
 
+// alarmButton.addEventListener('click', handleRing()/* callback 함수 설정 (⚠️ 실행하는 것이 아님!) */)
+alarmButton.addEventListener('click', handleRing)
 
 
 // 실습 4.
-// const submitButton = document.querySelector('.submit-button')
+const submitButton = document.querySelector('.submit-button')
 
-// submitButton.addEventListener('onclick', () => {
-//   console.log('제출 완료!')
-// })
+submitButton.addEventListener('click', () => {
+  console.log('제출 완료!')
+})
 
 // 실습 5.
-// const closeButton = document.querySelector('.close-btn')
+const closeButton = document.querySelector('.close-btn')
 
-// closeButton.addEventListner('click', () => {
-//   console.log('닫기 버튼 클릭!')
-// })
+closeButton.addEventListener('click', () => {
+  console.log('닫기 버튼 클릭!')
+})
 
 // 실습 6.
-// const cart = document.querySelector('[data-id="cart"]')
-// const price = cart.querySelector('[data-id="price"]').textContent
-// const quantity = cart.querySelector('[data-id="quantity"]').textContent
-// const calcButton = cart.querySelector('[data-id="calc-button"]')
-// const resultDisplay = cart.querySelector('[data-id="total-result"]')
+const cart = document.querySelector('[data-id="cart"]')
+const price = cart.querySelector('[data-id="price"]').textContent
+const quantity = cart.querySelector('[data-id="quantity"]').textContent
+const calcButton = cart.querySelector('[data-id="calc-button"]')
+const resultDisplay = cart.querySelector('[data-id="total-result"]')
 
-// calcButton.addEventListener('click', () => {
-//   const total = price + quantity
-//   resultDisplay.textContent = total
-// })
+calcButton.addEventListener('click', () => {
+  const priceNumber = Number(price.replace(',', ''))
+  const quantityNumber = Number(quantity)
+  const total = priceNumber * quantityNumber
+  resultDisplay.textContent = total.toLocaleString() /* 숫자 값 -> Number 객체 메서드 활용 */
+})
 
 
 // --------------------------------------------------------------------------
