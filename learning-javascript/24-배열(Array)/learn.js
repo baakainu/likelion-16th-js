@@ -144,3 +144,25 @@ console.log(cart)
 cart[0] = '계란'
 cart[1] = '우유'
 console.log(cart)
+
+// --------------------------------------------------------------------------
+// 실습 풀이
+// --------------------------------------------------------------------------
+
+// 정석적 방식으로 배열 객체 생성
+// const webTechniques = new Array('HTML', 'CSS', 'JavaScript')
+const webTechniques = []
+webTechniques[webTechniques.length] = 'HTML'
+webTechniques[webTechniques.length] = 'CSS'
+webTechniques[webTechniques.length] = 'JavaScript'
+console.log(webTechniques)
+
+const instructors = ['야무', '슬비']
+console.log(instructors)
+
+const yamoo9 = instructors[0]
+console.log(yamoo9)
+
+instructors[1] = '김데레사'
+console.log(instructors[1])
+console.log(instructors)
