@@ -138,9 +138,9 @@ function removeItemsFromLast(arrayObject, removeCount) {
 // const popMany = removeItemsFromLast
 // const dropRight = popMany
 
-const removedItems = removeItemsFromLast(numbers, 3)
-console.log(numbers)
-console.log(removedItems) // 삭제된 항목이 포함된 새로운 배열 [2, 3, 4]
+// const removedItems = removeItemsFromLast(numbers, 3)
+// console.log(numbers)
+// console.log(removedItems) // 삭제된 항목이 포함된 새로운 배열 [2, 3, 4]
 
 
 // 특정 구간(인덱스 1부터 3개)의 손님을 배웅하려면?
@@ -158,7 +158,11 @@ console.log(numbers)
 // --------------------------------------------------------------------------
 
 const originalLog = ['데이터1', '데이터2', '데이터3']
-let backupLog // 원본과 똑같은 사본 생성
+//                      0   ,    1    ,   2
+// let backupLog = originalLog.slice(0, originalLog.length) // 원본과 똑같은 사본 생성
+let backupLog = originalLog.slice() // 원본과 똑같은 사본 생성
+
+// originalLog.splice(originalLog.length - 2, 2)
 
 // 사본(배열)에 끝에 '데이터4' 추가
 
