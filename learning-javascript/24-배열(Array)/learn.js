@@ -103,7 +103,11 @@ allDatas[10] = 'add item' // [숫자(0), ..., 함수(9), 문자(10)]
 console.log(allDatas)
 console.log(allDatas.length)
 
+// ✅ 좋은 습관
 allDatas[allDatas.length] = '멋사 16기!!'
+
+// ❌ 나쁜 습관 (메모리 낭비, 버그 유발 가능성 높음)
+// allDatas[12] = '멋사 16기!!'
 
 console.log(allDatas)
 
@@ -125,7 +129,18 @@ console.log(allDatas)
 // 린터(Linter) 점검 실습: 아래 코드의 '빨간 줄' 원인을 찾아보세요.
 // --------------------------------------------------------------------------
 
-// const shoppingCart = ['두부', '양파', '대파']
+const cart = ['두부', '양파', '대파']
 
 // // ⚠️ 여기서 린터가 'no-const-assign' 경고를 보냅니다.
-// shoppingCart = ['계란', '우유']
+// cart = ['계란', '우유']
+
+console.log(cart)
+
+// 배열 값 비우기(모두 제거)
+cart.length = 0
+console.log(cart)
+
+// 새 값으로 채우기 ('계란', '우유')
+cart[0] = '계란'
+cart[1] = '우유'
+console.log(cart)
