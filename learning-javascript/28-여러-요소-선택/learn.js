@@ -2,6 +2,65 @@
 // 실습: 다중 요소 선택과 반복 (querySelectorAll vs getElementsBy...)
 // --------------------------------------------------------------------------
 
+const sectionList = document.querySelectorAll('section')
+
+// NodeList [section, section, section] (배열과 유사한 객체, ⚠️ 배열 객체는 아님)
+// console.log(sectionList)
+
+// while 문
+{
+  // 순반향(정순) 루프
+  let i = 0
+  const sectionCount = sectionList.length
+
+  while (i < sectionCount) {
+    // eslint-disable-next-line no-unused-vars
+    const sectionItem = sectionList.item(i)
+    // console.log(sectionItem)
+    i = i + 1
+  }
+}
+
+{
+  // 역방향(역순) 루프
+  // 여기에 코드 작성
+  // let i = sectionList.length - 1 // 2 → 1 → 0
+  let i = sectionList.length // 3
+  
+  while (--i >= 0) {
+    // eslint-disable-next-line no-unused-vars
+    const sectionItem = sectionList.item(i)
+    // console.log(sectionItem)
+    // i -= 1
+  }
+}
+
+// for 문
+{
+  // 순방향(정순)
+  for (let i = 0, l = sectionList.length; i < l; ++i) {
+    const sectionItem = sectionList.item(i)
+    console.log(sectionItem)
+  }
+
+  // 역방향(역순)
+  for (let i = sectionList.length - 1; i >= 0; --i) {
+    const sectionItem = sectionList[i]
+    console.log(sectionItem)
+  }
+}
+
+// for...of 문
+
+// forEach 메서드
+
+
+
+// '.prose header > *' 요소들 수집해 참조
+const headerChildren = document.querySelectorAll('.prose header > *')
+// console.log(headerChildren) // NodeList [h1, p]
+
+
 // [실습] querySelectorAll을 이용한 다중 선택
 // 1. '.life-tips' 내부의 모든 'p' 요소를 선택하여 'paragraphs' 변수에 할당하세요.
 // 2. 수집된 NodeList의 길이를 콘솔에 출력하세요.
