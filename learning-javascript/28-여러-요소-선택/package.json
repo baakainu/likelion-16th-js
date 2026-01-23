@@ -6,6 +6,7 @@
     "htmlhint": "^1.8.0"
   },
   "scripts": {
-    "dev": "bunx live-server --host=localhost --port=3000 --entry-file=learn.html --no-browser"
+    "dev": "bunx live-server --host=localhost --port=3000 --entry-file=learn.html --no-browser",
+    "remind": "bunx live-server --host=localhost --port=3002 --entry-file=remind.html --no-browser"
   }
 }
