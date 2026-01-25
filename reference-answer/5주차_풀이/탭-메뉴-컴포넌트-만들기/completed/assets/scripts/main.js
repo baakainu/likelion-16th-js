@@ -4,20 +4,38 @@ const ACTIVE_CLASS = {
 }
 
 const tabs = document.querySelectorAll('.tab-nav .tab-nav__button')
-const tabPanels = document.querySelectorAll('.tab-panel')
+const panels = document.querySelectorAll('.tab-panel')
 
 tabs.forEach((tab) => {
   tab.addEventListener('click', () => {
-    tabs.forEach((tab) => tab.classList.remove(ACTIVE_CLASS.tab))
-    tab.classList.add(ACTIVE_CLASS.tab)
+    const selectedTab = tab
 
-    tabPanels.forEach((panel) => panel.classList.remove(ACTIVE_CLASS.panel))
+    removeActivatedClass(tabs, 'tab')
+    activeSelectedTab(selectedTab)
 
-    const targetId = tab.getAttribute('data-target')
-    const targetContent = document.getElementById(targetId)
-    
-    if (targetContent) {
-      targetContent.classList.add(ACTIVE_CLASS.panel)
-    }
+    removeActivatedClass(panels, 'panel')
+    activeSelectedPanel(selectedTab)
   })
 })
+
+function removeActivatedClass(list, type) {
+  const activeClassName = ACTIVE_CLASS[type]
+  list.forEach((item) => {
+    if (item.classList.contains(activeClassName)) {
+      item.classList.remove(activeClassName)
+    }
+  })
+}
+
+function activeSelectedTab(selectedTab) {
+  selectedTab.classList.add(ACTIVE_CLASS.tab)
+}
+
+function activeSelectedPanel(selectedTab) {
+  const targetId = selectedTab.getAttribute('data-target')
+  const targetPanel = document.getElementById(targetId)
+  
+  if (targetPanel) {
+    targetPanel.classList.add(ACTIVE_CLASS.panel)
+  }
+}
