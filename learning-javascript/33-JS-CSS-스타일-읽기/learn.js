@@ -12,7 +12,7 @@ console.groupCollapsed('1. 인라인 스타일 읽기 (style 속성)')
 
 const prose = document.querySelector('.prose')
 const targetElement = prose.querySelector('section:first-of-type h2')
-// console.log(targetElement)
+console.log(targetElement)
 // console.log(targetElement.style.fontSize)
 // console.log(targetElement.style.cssText)
 
@@ -38,10 +38,10 @@ const heading1ComputedStyle = getComputedStyle(heading1) // CSSStyleDeclaration
 
 const sizeUpButton = document.querySelector('.js-size-up-button')
 sizeUpButton.addEventListener('click', () => {
-  let currentFontSize = heading1ComputedStyle.getPropertyValue('font-size')
-  currentFontSize = parseInt(currentFontSize, 10)
-  const nextFontSize = currentFontSize + 8
-  heading1.style.setProperty('font-size', nextFontSize + 'px')
+  let currentFontSize = heading1ComputedStyle.getPropertyValue('font-size') // '24px'
+  currentFontSize = parseInt(currentFontSize, 10) // 24
+  const nextFontSize = currentFontSize + 8 // 24 + 8 = 32
+  heading1.style.setProperty('font-size', nextFontSize + 'px') // '32px'
 })
 
 
@@ -52,10 +52,16 @@ console.groupEnd()
 // 1. '.pseudo-box' 요소를 선택하세요.
 // 2. getComputedStyle()의 두 번째 인자를 활용하여 '::before' 가상 요소의 스타일을 가져오세요.
 // 3. 가상 요소의 'content'와 'color' 속성 값을 콘솔에 출력하세요.
-console.groupCollapsed('3. 가상 요소 스타일 읽기 (::before)')
+console.group('3. 가상 요소 스타일 읽기 (::before / ::after)')
 
-// 이곳에 코드를 작성하세요.
+// CSSStyleDeclaration 함수가 실행된 시점의 스냅샷(Snapshot) 데이터
+const pseudoStyles = getComputedStyle(sizeUpButton, '::after')
+console.log(pseudoStyles.getPropertyValue('content'))
+console.log(pseudoStyles.content)
 
+console.log(pseudoStyles.getPropertyValue('font-size'))
+console.log(pseudoStyles['font-size'])
+console.log(pseudoStyles.fontSize)
 
 console.groupEnd()
 
