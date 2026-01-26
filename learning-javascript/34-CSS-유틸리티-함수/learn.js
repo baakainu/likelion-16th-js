@@ -5,9 +5,23 @@
 // [실습] getStyle() 함수
 // 1. 요소(element)와 CSS 속성 이름(propertyName)을 인자로 받습니다.
 // 2. getComputedStyle()을 사용하여 요소의 계산된 스타일 값을 반환하는 로직을 작성하세요.
-console.groupCollapsed('getStyle() 함수 작성')
+console.group('getStyle() 함수 작성')
 
 /* 실습 코드 작성 */
+function getStyle(element, propertyName) {
+  const elementStyleSnapshot = getComputedStyle(element)
+  const propertyVaue = elementStyleSnapshot.getPropertyValue(propertyName)
+  return propertyVaue
+}
+
+const strongElement = document.querySelector('.prose p:first-of-type strong')
+
+console.log(getStyle(strongElement, 'font-weight'))
+console.log(getStyle(strongElement, 'font-size'))
+console.log(getStyle(strongElement, 'color'))
+console.log(getStyle(strongElement, 'letter-spacing'))
+console.log(getStyle(strongElement, 'word-spacing'))
+
 
 console.groupEnd()
 
