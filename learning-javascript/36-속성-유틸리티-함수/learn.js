@@ -7,7 +7,22 @@
 // 2. getAttribute()를 사용하여 요소의 속성 값을 반환하는 로직을 작성하세요.
 console.groupCollapsed('getAttr() 함수 작성')
 
-// 이곳에 코드를 작성하세요.
+const prose = document.querySelector('.prose')
+const paragraph = prose.querySelector('p')
+const strong = paragraph.querySelector('strong')
+
+const proseClassAttr = getAttr(prose, 'class')
+console.log(proseClassAttr)
+
+const paragraphDataAttr = getAttr(paragraph, 'data-has-strong')
+console.log(paragraphDataAttr)
+
+const strongTitleAttr = getAttr(strong, 'title')
+console.log(strongTitleAttr)
+
+function getAttr(element, attributeName) {
+  return element.getAttribute(attributeName)
+}
 
 console.groupEnd()
 
@@ -18,7 +33,12 @@ console.groupEnd()
 // 3. 메서드 체이닝이 가능하도록 요소를 반환(return)하세요.
 console.groupCollapsed('setAttr() 함수 작성')
 
-// 이곳에 코드를 작성하세요.
+setAttr(strong, 'id', 'powerful')
+setAttr(strong, 'data-id', 'emphasis element')
+
+function setAttr(element, attributeName, attributeValue) {
+  element.setAttribute(attributeName, attributeValue)
+}
 
 console.groupEnd()
 
@@ -29,7 +49,13 @@ console.groupEnd()
 // 3. 메서드 체이닝이 가능하도록 요소를 반환(return)하세요.
 console.groupCollapsed('removeAttr() 함수 작성')
 
-// 이곳에 코드를 작성하세요.
+removeAttr(strong, 'data-id')
+removeAttr(strong, 'id')
+removeAttr(strong, 'title')
+
+function removeAttr(element, attributeName) {
+  element.removeAttribute(attributeName)
+}
 
 console.groupEnd()
 
@@ -38,9 +64,36 @@ console.groupEnd()
 // 1. 위에서 작성한 getAttr, setAttr, removeAttr을 내부에서 활용하세요.
 // 2. attributeName이 객체({})인 경우, 재귀 호출을 통해 여러 속성을 한 번에 적용하세요.
 // 3. attributeValue가 null이면 '삭제', 값이 있으면 '설정', 없으면 '읽기'를 수행하세요.
-console.groupCollapsed('attr() 함수 작성')
+console.group('attr() 함수 작성')
 
-// 이곳에 코드를 작성하세요.
+// 속성 추가(쓰기)
+attr(prose, 'id', 'main-container')
+attr(prose, 'data-id', 'main-element')
+
+// 속성 확인(읽기)
+const proseId = attr(prose, 'id')
+const proseDataId = attr(prose, 'data-id')
+console.log(proseId, proseDataId)
+
+// 속성 제거(삭제)
+setTimeout(() => {
+  // 2.4초 뒤에 제거
+  attr(prose, 'id', null)
+  attr(prose, 'data-id', null)
+  console.log('prose 요소의 id, data-id 속성 모두 삭제')
+}, 4000)
+
+function attr(element, attributeName, attributeValue) {
+  if (attributeValue === undefined) {
+    return getAttr(element, attributeName)
+  }
+
+  if (attributeValue === null) {
+    return removeAttr(element, attributeName)
+  }
+
+  setAttr(element, attributeName, attributeValue)
+}
 
 console.groupEnd()
 
