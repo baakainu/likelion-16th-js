@@ -37,9 +37,6 @@ globalThis.addEventListener(
   }
 )
 
-
-
-
 console.groupEnd()
 
 // [실습] AbortController와 signal을 이용한 일괄 제거
@@ -174,7 +171,7 @@ console.groupEnd()
   // 추적 시작
   buttonStart.addEventListener('click', () => {
     // [TODO] 1. 새로운 AbortController를 생성하여 controller 변수에 할당하세요.
-    /* 여기에 코드 작성 */
+    controller = new AbortController()
 
     // UI 업데이트
     buttonStart.disabled = true
@@ -190,6 +187,9 @@ console.groupEnd()
       },
       // [TODO] 2. signal 옵션을 설정하세요.
       /* 여기에 코드 작성 */
+      {
+        signal: controller.signal, // AbortSignal: mousemove 이벤트 리스너의 signal 옵션 설정
+      }
     )
 
     // 클릭 이벤트
@@ -202,6 +202,9 @@ console.groupEnd()
       },
       // [TODO] 3. signal 옵션을 설정하세요.
       /* 여기에 코드 작성 */
+      {
+        signal: controller.signal, // AbortSignal: click 이벤트 리스너의 signal 옵션 설정
+      }
     )
   })
 
@@ -211,6 +214,7 @@ console.groupEnd()
     if (controller) {
       // [TODO] 4. 추가된 모든 이벤트를 한 번에 제거하세요.
       /* 여기에 코드 작성 */
+      controller.abort()
 
       // UI 초기화
       buttonStart.disabled = false
