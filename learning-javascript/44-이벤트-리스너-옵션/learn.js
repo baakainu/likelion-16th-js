@@ -92,39 +92,54 @@ console.groupEnd()
   const checkPassive = document.getElementById('check-passive')
   const log = document.getElementById('log')
 
+  // 현재 어볼트 컨트롤러 = 비어있음
   let currentController = null
 
-  // 초기 실행
+  // 초기 실행 (처음 로드될 때 attachListener 함수 실행)
   attachListener()
   // 체크박스 변경 시, 리스너 재등록
   checkPassive.addEventListener('change', attachListener)
 
   function attachListener() {
     // 기존 리스너 제거 (AbortController 활용)
-    if (currentController) {
+    if (currentController !== null) {
+      // 기존에 추가된 이벤트 리스너 작업 중단
       currentController.abort()
     }
 
-    // 컨트롤러 생성
-    currentController = new AbortController()
+    // 생성된 어볼트 컨트롤러를 currentController 변수에 할당
+    currentController = new AbortController() // AbortController {}
+    
     // 체크 상태 확인 (패시브 설정)
     const isPassive = checkPassive.checked
 
-    console.log('isPassive =', isPassive)
-
     log.textContent = '현재 옵션: { passive: ' + isPassive + ' }'
-    log.style.color = isPassive ? '#00f' : '#f00'
+    
+    // 삼항 연산자 식
+    // log.style.color = isPassive ? '#00f' : '#f00'
+    if (isPassive) {
+      log.style.setProperty('color', '#00f')
+    } else {
+      log.style.setProperty('color', '#f00')
+    }
 
+    // 타겟 박스에 이벤트 리스너 추가
+    // abortController에 의해 추가된 리스너 작동 중단될 수 있음
+    // currentController.abort() (removeEventListener 대체)
     targetBox.addEventListener(
       'wheel',
-      (e) => {
+      (eventObject) => {
+        // 비동기 프로그래밍
+        // try...catch 문
         try {
-          // 스크롤을 막으려는 시도
-          e.preventDefault()
+          // 브라우저에게 기본 작동 방지 명령
+          // 브라우저는 스크롤을 막으려는 시도 (일시적 대기 상태 => 모바일 환경 성능 저하)
+          eventObject.preventDefault()
+
           log.textContent = '스크롤 차단 성공! (preventDefault 작동)'
-        } catch (err) {
+        } catch (errorObject) {
           // passive: true일 때 오류 발생 (콘솔 패널 확인)
-          console.error(err)
+          console.error(errorObject)
         }
 
         if (isPassive) {
@@ -135,7 +150,8 @@ console.groupEnd()
       // 1. passive 값을 isPassive 변수로 설정
       // 2. signal 값을 currentController.signal로 설정
       {
-        passive: isPassive /* checked */
+        passive: isPassive, /* checked */
+        signal: currentController.signal, /* AbortSignal */
       }
     )
   }
