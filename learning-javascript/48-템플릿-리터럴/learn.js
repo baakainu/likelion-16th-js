@@ -10,7 +10,31 @@ console.group('템플릿 리터럴 기본 실습')
 
 // 예전 방법의 문자열 생성 함수
 function generateOldHTMLCode(data) {
-  let htmlCode = [
+
+  // 방법 1. 문자열 연결(접합)
+  let htmlCode = ''
+  htmlCode += '<div class="form-input">'
+  htmlCode += '<label for="'+ data.id +'">'+ data.label +'</label>'
+  htmlCode += '<input type="'+ data.type +'" id="'+ data.id +'" placeholder="'+ data.placholder +'" />'
+  htmlCode += '</div>'
+
+  console.log('문자열 연결(접합) 결과\n', htmlCode)
+
+  // 방법 2. 템플릿 비슷하게 이스케이프 처리
+  htmlCode = '<div class="form-input">\
+    <label for="'+ data.id +'">'+ data.label +'</label>\
+    <input\
+      type="'+ data.type +'"\
+      id="'+ data.id +'"\
+      placeholder="'+ data.placholder +'"\
+    />\
+  </div>'
+
+  console.log('템플릿 비슷하게 이스케이프 처리\n', htmlCode)  
+
+
+  // 방법 3. 배열 사용해 문자열로 조인(join)
+  htmlCode = [
     '<div class="form-input">',
       '<label for="' + data.id + '">' + data.label + '</label>',
       '<input',
@@ -20,6 +44,8 @@ function generateOldHTMLCode(data) {
       '/>',
     '</div>',
   ].join('')
+
+  console.log('배열 사용해 문자열로 조인(join)\n', htmlCode)  
 
   return htmlCode
 }
@@ -37,7 +63,7 @@ console.log(
 function generateHTMLCode(data) {
   // 템플릿(Template) 리터럴(Literal, 값)
   // JavaScript를 사용해 HTML 코드 구조화 (Markup)
-  const htmlTemplate = /* html */ `
+  const htmlTemplate = `
     <div class="form-input">
       <label for="${data.id}">${data.label}</label>
       <input
