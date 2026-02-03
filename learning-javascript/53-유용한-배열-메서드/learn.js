@@ -182,6 +182,102 @@ console.groupCollapsed('3. filter 실습')
 
 
 // 복잡한 데이터 필터링
+{
+  const users = [
+    { id: 'USER-KCLS', name: '김하영', hobby: ['서핑', '요가'], email: 'hayoung@naver.com', location: '서울', age: 27 },
+    { id: 'USER-EKX1', name: '박준수', hobby: ['라이딩', '등산'], email: 'junsu@daum.net', location: '이천', age: 32 },
+    { id: 'USER-CISK', name: '이상준', hobby: ['서핑', '독서'], email: 'sangjun@gmail.com', location: '원주', age: 29 },
+    { id: 'USER-OCLS', name: '최민주', hobby: ['러닝', '요가'], email: 'minju@kakao.com', location: '서울', age: 25 },
+    { id: 'USER-EIKA', name: '정해영', hobby: ['라이딩', '수영'], email: 'haeyoung@naver.com', location: '부산', age: 31 },
+    { id: 'USER-2LOW', name: '김민식', hobby: ['서핑', '클라이밍'], email: 'minsik@naver.com', location: '대전', age: 28 },
+    { id: 'USER-9KMZ', name: '박지수', hobby: ['요가', '명상'], email: 'jisoo@gmail.com', location: '서울', age: 26 },
+    { id: 'USER-7PQR', name: '이현우', hobby: ['등산', '캠핑'], email: 'hyunwoo@daum.net', location: '부산', age: 33 },
+    { id: 'USER-3ABC', name: '최예지', hobby: ['서핑', '사진촬영'], email: 'jimin@naver.com', location: '제주', age: 30 },
+    { id: 'USER-5XYZ', name: '정소희', hobby: ['러닝', '자전거'], email: 'sohee@kakao.com', location: '서울', age: 24 },
+    { id: 'USER-8DEF', name: '김태호', hobby: ['요가', '명상'], email: 'taeho@gmail.com', location: '대구', age: 35 },
+    { id: 'USER-4GHI', name: '박민지', hobby: ['라이딩', '수영'], email: 'minji@naver.com', location: '인천', age: 27 },
+    { id: 'USER-1JKL', name: '이준호', hobby: ['등산', '낚시'], email: 'junho@daum.net', location: '서울', age: 31 },
+    { id: 'USER-6MNO', name: '최세진', hobby: ['서핑', '스노우보드'], email: 'sejin@kakao.com', location: '부산', age: 29 },
+    { id: 'USER-0PQR', name: '정유진', hobby: ['요가', '필라테스'], email: 'yujin@gmail.com', location: '광주', age: 28 },
+    { id: 'USER-2STU', name: '김민수', hobby: ['러닝', '축구'], email: 'minsu@naver.com', location: '서울', age: 26 },
+    { id: 'USER-5VWX', name: '박지훈', hobby: ['라이딩', '테니스'], email: 'jihoon@daum.net', location: '대전', age: 30 },
+    { id: 'USER-7YZA', name: '이수진', hobby: ['등산', '요리'], email: 'soojin@kakao.com', location: '부산', age: 32 },
+    { id: 'USER-9BCD', name: '최동현', hobby: ['서핑', '드론'], email: 'donghyun@gmail.com', location: '제주', age: 34 },
+    { id: 'USER-4EFG', name: '정예지', hobby: ['요가', '그림'], email: 'yeji@naver.com', location: '서울', age: 25 }
+  ]
+
+  console.log(users.length)
+
+  let foundPeople = null
+
+  // 성이 '?'인 사람들만 걸러보세요.
+  const firstName = '이'
+  // foundPeople = users.filter((user) => user.name[0] === firstName)
+  foundPeople = users.filter(({ name }) => name.charAt(0) === firstName)
+  console.log(foundPeople.length)
+  console.log(foundPeople)
+
+  // 이름이 '??'인 사람들을 걸러보세요.
+  const lastName = '예지'
+  // 구조 분해 할당 사용하지 않을 경우
+  foundPeople = users.filter((user) => user.name.slice(1) === lastName)
+  // 구조 분해 할당 사용할 경우
+  // foundPeople = users.filter(({ name }) => name.slice(1) === lastName)
+  console.log(foundPeople.length)
+  console.log(foundPeople)
+
+  // 지역이 '??'인 사람들만 걸러보세요.
+  const region = '제주'
+  // 구조 분해 할당 사용하지 않을 경우
+  // foundPeople = users.filter((user) => user.location === region)
+  // 구조 분해 할당 사용할 경우
+  foundPeople = users.filter(({ location }) => location === region)
+  console.log(foundPeople.length)
+  console.log(foundPeople)
+
+  // NAVER 이메일을 사용하는 사람들만 걸러보세요.
+  const emailService = 'NAVER'
+
+  // 함수 값을 화살표 함수에서 명시적으로 반환할 경우
+  foundPeople = users.filter((user) => { 
+    return user.email.includes(emailService.toLowerCase()) 
+  })
+  
+  // 함수 값을 화살표 함수에서 암묵적으로 반환할 경우
+  foundPeople = users.filter((user) => user.email.includes(emailService.toLowerCase()))
+  
+  // 구조 분해 할당 문법을 사용해 user 객체의 email 속성을 매개변수로 빼낸 경우
+  foundPeople = users.filter(({ email }) => email.includes(emailService.toLowerCase()))
+
+  console.log(foundPeople.length)
+  console.log(foundPeople)
+
+  // 나이대가 20대인 사람들만 걸러보세요.
+  // 나이(age)가 20대인 조건 (20-29)
+  // age > 19 && age < 30
+
+  // 구조 분해 할당을 사용하지 않을 경우
+  foundPeople = users.filter((user) => user.age > 19 && user.age < 30)
+  
+  // 구조 분해 할당을 사용할 경우
+  foundPeople = users.filter(({ age }) => age > 19 && age < 30)
+  
+  console.log(foundPeople.length)
+  console.log(foundPeople)
+
+  // 취미가 '??'인 사람들만 걸러보세요.
+  const hobbyName = '서핑'
+
+  // 구조 분해 할당을 사용하지 않을 경우
+  foundPeople = users.filter((user) => user.hobby.includes(hobbyName))
+
+  // 구조 분해 할당을 사용할 경우
+  foundPeople = users.filter(({ hobby }) => hobby.includes(hobbyName))
+
+  console.log(foundPeople.length)
+  console.log(foundPeople)
+
+}
 
 
 console.groupEnd()
