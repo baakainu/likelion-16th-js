@@ -279,6 +279,64 @@ console.groupCollapsed('3. filter 실습')
 
 }
 
+// 간단한 데이터 가공
+{
+  // 숫자를 나타내는 단어로 구성된 배열
+  const words = '하나 둘 셋 넷 다섯 여섯 일곱 여덟 아홉 열'.split(' ')
+  console.log(words)
+
+  // 가공된 결과: [{ 인덱스: 숫자를_표현한_단어 }, { 인덱스: 숫자를_표현한_단어 }, ...]
+  const indexOfWords = words.map((word, index) => {
+    // 배열을 순환해 각 요소 마다 가공한 결과를 내보낸다.
+    // 가공한 요소 : { 인덱스: 숫자를_표현한_단어 }
+    // 예시) { 0: '하나' }, { 1: '둘' }
+    const mappedWord = { [index]: word }
+    return mappedWord
+  })
+
+  // 가공된 각 요소를 포함하는 새로운 배열 반환
+  // 예상된 결과: [{ 0: '하나' }, { 1: '둘' }, ...]
+  console.log(indexOfWords)
+
+
+  // 콜백 함수의 순서? 어떻게 지정되나?
+  // map() 메서드 흉내내기를 통해 
+  // 콜백 함수의 순서 지정하는 방법 학습
+  // JavaScript 고차 함수, 일급 객체, 일급 함수를 지원
+  // 함수는 값이고, 변수에 할당 가능하며, 
+  // 함수에 인자로 전달 및 반환 값으로 내보낼 수 있다.
+  function customMap(array, callbackFn) {
+    const mappedArray = []
+
+    // for 문
+    for (let index = 0, l = array.length; index<l; ++index) {
+      const item = array.at(index)
+      // const mappedItem = callbackFn(index, item, array)
+      const mappedItem = callbackFn(item, index, array)
+      mappedArray.push(mappedItem)
+    }
+    
+    // map() 함수 흉내내기
+    // 반환값 가공된 요소들로 구성된 새로운 배열 반환
+    return mappedArray
+  }
+
+  // const customResult = customMap(words, (index, item) => {
+  const customResult = customMap(words, (item, index) => {
+    // 콜백 함수에서 가공된 각 요소의 결과를 반환
+    const mappedWord = { [index]: item }
+    return mappedWord
+  })
+
+  console.log(customResult)
+
+}
+
+
+// 복잡한 데이터 가공
+{
+  // 
+}
 
 console.groupEnd()
 
