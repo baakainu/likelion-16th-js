@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // --------------------------------------------------------------------------
 // 실습: textContent & innerHTML
 // --------------------------------------------------------------------------
@@ -123,7 +124,36 @@ console.groupEnd()
 // 2. 템플릿 리터럴을 활용하여 <h2>박상현</h2><p>프론트엔드 개발자</p> 구조를 만드세요.
 console.groupCollapsed('2. innerHTML 실습')
 
-// 이곳에 코드를 작성하세요
+{
+  const practice2 = document.getElementById('practice2')
+  const container = practice2.querySelector('.card-container')
+  
+  practice2.addEventListener('click', (e) => {
+    const button = e.target.closest('.btn-add')
+    if (!button) return
+    if (container.innerHTML.trim() !== '') return
+    alert('카드 렌더링')
+    renderCard()
+    // disable(button)
+  })
+
+  function enable(element) {
+    element.disabled = false
+    element.style.setProperty('cursor', 'pointer')
+  }
+  
+  function disable(element) {
+    element.disabled = true
+    element.style.setProperty('cursor', 'not-allowed')
+  }
+
+  function renderCard() {
+    container.innerHTML = /* html */`
+      <h2>박상현</h2>
+      <p>프론트엔드 개발자</p>
+    `
+  }
+}
 
 console.groupEnd()
 
